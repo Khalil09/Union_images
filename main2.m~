@@ -1,0 +1,14 @@
+buildingDir = fullfile('/home/khalil/unb/Computação Visual/union_images');
+buildingScene = imageDatastore(buildingDir);
+
+im1 = readimage(buildingScene, 1);
+im2 = readimage(buildingScene, 2);
+
+numImages = numel(buildingScene.Files);
+panorama2 = make_union(im1, im2);
+
+for n = 3:numImages
+   panorama = make_union(readimage(buildingScene,n), panorama);
+end
+
+imshow(panorama)
